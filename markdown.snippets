@@ -1,2 +1,19 @@
 snippet cdate
 	`r format(Sys.time(), "%Y-%m-%d")`
+
+snippet knitr_setup
+	```{r setup, include=FALSE}
+	knitr::opts_chunk$set(echo = TRUE,
+						cache = TRUE,
+						message = FALSE,
+						warning = FALSE,
+						error = FALSE)
+
+	knitr::opts_knit$set(root.dir = "${1:path}")
+
+	if (!require("pacman")) install.packages("pacman")
+	pacman::p_load(${2: package},
+				   ${3: package})
+
+
+	```
